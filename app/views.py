@@ -5,20 +5,21 @@ from django.http import HttpResponse, JsonResponse, HttpResponsePermanentRedirec
 # Create your views here.
 
 def index(request):
-    return HttpResponse("<h1>Index</h1>")
-
-
-def about(request):
-    return HttpResponse("<h1>About</h1>")
-
-
-def user(request):
-    return HttpResponse("<h1>User</h1>")
-
-
-def json(request, name: str = "Undefined", age: int = 16):
-    return JsonResponse({"name": name, "age": age})
+    return render(request, "index.html")
 
 
 def home(request):
     return HttpResponsePermanentRedirect("/")
+
+
+def about(request):
+    return render(request, "about.html")
+
+
+def user(request, name: str = "Undefined", age: int = 16):
+    data = {"name": name, "age": age}
+    return render(request, "user.html", context=data)
+
+
+def json(request, name: str = "Undefined", age: int = 16):
+    return JsonResponse({"name": name, "age": age})

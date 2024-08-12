@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static "css/styles.css" %}" />
+    <title>Ехперименты</title>
+</head>
+<body>
+    <h2>Привет миррр!</h2>
+    <p><b>{% now "Y-m-d H:i:s" %}</b></p>
+    <h3>Просто космос</h3>
+    <img src="{% static "images/001.jpg" %}" alt="космос">
+</body>
+</html>
