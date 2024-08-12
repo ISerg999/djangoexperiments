@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponsePermanentRedirect
 
 
 # Create your views here.
@@ -16,5 +16,9 @@ def user(request):
     return HttpResponse("<h1>User</h1>")
 
 
-def json(request):
-    return JsonResponse({"name": "Владислав", "age": "33"})
+def json(request, name: str = "Undefined", age: int = 16):
+    return JsonResponse({"name": name, "age": age})
+
+
+def home(request):
+    return HttpResponsePermanentRedirect("/")

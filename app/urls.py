@@ -5,5 +5,8 @@ urlpatterns = [
     path('user', views.user, name="user"),
     path('about', views.about, name="about"),
     path('json', views.json, name="json"),
+    path('json/<name>', views.json, name="json"),
+    path('json/<name>/<int:age>', views.json, name="json"),
+    path('home', views.home),
     path('', views.index, name="index"),
 ]
