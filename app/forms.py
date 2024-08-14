@@ -3,7 +3,7 @@ from django import forms
 
 class UserForm(forms.Form):
 
-    name = forms.CharField(label="Имя", initial="Безымянный", help_text="Введите свое имя")
-    age = forms.IntegerField(label="Возраст", initial=16, help_text="Введите свой возраст")
-    comment = forms.CharField(label="Комментарий", widget=forms.Textarea)
-    field_order = ["age", "name", "comment"]
+    name = forms.CharField(label="Имя", min_length=2, max_length=20)
+    age = forms.IntegerField(label="Возраст", required=False, min_value=1, max_value=100)
+    email = forms.EmailField(label="Электронная почта", required=False, min_length=7)
+    # field_order = ["age", "name", "comment"]
