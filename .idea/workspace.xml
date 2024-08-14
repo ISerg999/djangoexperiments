@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b78d760-0033-4686-96d0-8992336f15f5" name="Changes" comment="Простые шаблны.">
-      <change afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
+    <list default="true" id="9b78d760-0033-4686-96d0-8992336f15f5" name="Changes" comment="Расширенные шаблоны.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/images/001.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/001.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/images/002.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/002.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/images/003.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/003.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiments/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiments/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +99,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-8336bb23522e-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.19072.16" />
+        <option value="bundled-python-sdk-ce3d9afa04ac-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.20224.347" />
       </set>
     </attachedChunks>
   </component>
@@ -141,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723481556259</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Расширенные шаблоны.">
+      <option name="closed" value="true" />
+      <created>1723651265452</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723651265452</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -160,6 +163,7 @@
     <MESSAGE value="Перенастройка параметров" />
     <MESSAGE value="Пути." />
     <MESSAGE value="Простые шаблны." />
-    <option name="LAST_COMMIT_MESSAGE" value="Простые шаблны." />
+    <MESSAGE value="Расширенные шаблоны." />
+    <option name="LAST_COMMIT_MESSAGE" value="Расширенные шаблоны." />
   </component>
 </project>

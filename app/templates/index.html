@@ -4,7 +4,17 @@
 {% block header %}Общая информация{% endblock header %}
 
 {% block content %}
-    <p><b>{% now "Y-m-d H:i:s" %}</b></p>
-    <h3>Просто космос</h3>
-    <img src="/static/images/001.jpg" alt="космос">
+<h2>Пользовательская форма</h2>
+<form method="post" action="postuser/" >
+    {% csrf_token %}
+    <p>Имя:<br> <input name="name" /></p>
+    <p>Возраст:<br> <input name="age" type="number" /></p>
+    <p>
+        Язык:<br />
+        <input name="languages" /><br />
+        <input name="languages" /><br />
+        <input name="languages" /><br />
+    </p>
+    <input type="submit" value="Send" />
+</form>
 {% endblock content %}
