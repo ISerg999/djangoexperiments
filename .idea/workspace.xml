@@ -4,39 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b78d760-0033-4686-96d0-8992336f15f5" name="Changes" comment="Пути.">
-      <change afterPath="$PROJECT_DIR$/app/static/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/images/001.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/images/002.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/images/003.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/about.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/user.html" afterDir="false" />
+    <list default="true" id="9b78d760-0033-4686-96d0-8992336f15f5" name="Changes" comment="Простые шаблны.">
+      <change afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/images/001.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/001.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/images/002.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/002.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/images/003.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/003.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiments/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ISerg999"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ISerg999&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ISerg999/djangoexperiments.git",
-    "accountId": "b0dba582-ccbd-476e-81dd-9f366c622ed8"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ISerg999/djangoexperiments.git&quot;,
+    &quot;accountId&quot;: &quot;b0dba582-ccbd-476e-81dd-9f366c622ed8&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -48,16 +53,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.manage.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/sv/projects/Python/djangoexperiments/venv",
-    "settings.editor.selected.configurable": "settings.sync"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.manage.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/sv/projects/Python/djangoexperiments/venv&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/static" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/experiments" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="djangoexperiments" />
@@ -119,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723478905002</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Простые шаблны.">
+      <option name="closed" value="true" />
+      <created>1723481556259</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1723481556259</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -137,6 +159,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Перенастройка параметров" />
     <MESSAGE value="Пути." />
-    <option name="LAST_COMMIT_MESSAGE" value="Пути." />
+    <MESSAGE value="Простые шаблны." />
+    <option name="LAST_COMMIT_MESSAGE" value="Простые шаблны." />
   </component>
 </project>
