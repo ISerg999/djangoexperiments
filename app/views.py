@@ -1,11 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpResponsePermanentRedirect
-
+from .forms import UserForm
 
 # Create your views here.
 
 def index(request):
-    return render(request, "index.html")
+    if request.method == "POST":
+        name = request.POST.get("name")
+        age = request.POST.get("age")
+        return HttpResponse(f"<h2>Привет: {name}, твой возраст: {age}</h2>")
+    else:
+        user_form = UserForm()
+        return render(request, "index.html", {"form": user_form})
 
 
 def home(request):
@@ -19,16 +25,6 @@ def about(request):
 def user(request, name: str = "Undefined", age: int = 16):
     data = {"name": name, "age": age}
     return render(request, "user.html", context=data)
-
-
-def postuser(request):
-    name = request.POST.get("name", "Безимянный")
-    age = request.POST.get("age", 16)
-    langs = request.POST.getlist("languages", ["python",]) # Также с select формы
-    return HttpResponse(f"""
-        <p>Имя: {name}  Возраст: {age}</p>
-        <p>Языки: {langs}</p>
-    """)
 
 
 def json(request, name: str = "Undefined", age: int = 16):

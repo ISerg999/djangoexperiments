@@ -4,17 +4,29 @@
 {% block header %}Общая информация{% endblock header %}
 
 {% block content %}
-<h2>Пользовательская форма</h2>
-<form method="post" action="postuser/" >
+<h2>Форма Django</h2>
+<b>В форме таблицы</b>
+<form method="post" >
     {% csrf_token %}
-    <p>Имя:<br> <input name="name" /></p>
-    <p>Возраст:<br> <input name="age" type="number" /></p>
-    <p>
-        Язык:<br />
-        <input name="languages" /><br />
-        <input name="languages" /><br />
-        <input name="languages" /><br />
-    </p>
-    <input type="submit" value="Send" />
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Отправить" >
+</form>
+<b>В форме списка</b>
+<form method="post" >
+    {% csrf_token %}
+    <ul>
+        {{ form.as_ul }}
+    </ul>
+    <input type="submit" value="Отправить" >
+</form>
+<b>В отдельном параграфе</b>
+<form method="post" >
+    {% csrf_token %}
+    <div>
+        {{ form.as_p }}
+    </div>
+    <input type="submit" value="Отправить" >
 </form>
 {% endblock content %}

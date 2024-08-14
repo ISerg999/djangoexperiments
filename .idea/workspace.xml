@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b78d760-0033-4686-96d0-8992336f15f5" name="Changes" comment="Расширенные шаблоны.">
+    <list default="true" id="9b78d760-0033-4686-96d0-8992336f15f5" name="Changes" comment="Шаблоны html">
+      <change afterPath="$PROJECT_DIR$/app/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/urls.py" afterDir="false" />
@@ -19,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -144,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723651265452</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Шаблоны html">
+      <option name="closed" value="true" />
+      <created>1723652312350</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1723652312350</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -164,6 +174,7 @@
     <MESSAGE value="Пути." />
     <MESSAGE value="Простые шаблны." />
     <MESSAGE value="Расширенные шаблоны." />
-    <option name="LAST_COMMIT_MESSAGE" value="Расширенные шаблоны." />
+    <MESSAGE value="Шаблоны html" />
+    <option name="LAST_COMMIT_MESSAGE" value="Шаблоны html" />
   </component>
 </project>

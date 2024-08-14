@@ -10,6 +10,5 @@ urlpatterns = [
     path('json/<name>', views.json, name="json"),
     path('json/<name>/<int:age>', views.json, name="json"),
     path('home', views.home),
-    path('postuser/', views.postuser),
     path('', views.index, name="index"),
 ]
