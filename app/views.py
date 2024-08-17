@@ -1,34 +1,41 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse, HttpResponsePermanentRedirect
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 from .forms import UserForm
+from .models import Person
+
 
 # Create your views here.
 
 def index(request):
-    if request.method == "POST":
-        userform = UserForm(request.POST)
-        if userform.is_valid():
-            name = userform.cleaned_data["name"]
-            return HttpResponse(f"<h2>Привет {name}!</h2>")
+    people = Person.objects.all()
+    return render(request, 'index.html', {'people': people})
+
+
+def create(request):
+    if request.method == 'POST':
+        person = Person()
+        person.name = request.POST.get("name")
+        person.age = request.POST.get("age")
+        person.save()
+    return HttpResponseRedirect("/")
+
+def edit(request, id):
+    try:
+        person = Person.objects.get(id=id)
+        if request.method == 'POST':
+            person.name = request.POST.get("name")
+            person.age = request.POST.get("age")
+            person.save()
+            return HttpResponseRedirect("/")
         else:
-            return HttpResponse("Неправельно введенные данные.")
-    else:
-        user_form = UserForm()
-        return render(request, "index.html", {"form": user_form})
+            return render(request, "edit.html", {"person": person})
+    except Person.DoesNotExist:
+        return HttpResponseNotFound("<h2>Person not found</h2>")
 
-
-def home(request):
-    return HttpResponsePermanentRedirect("/")
-
-
-def about(request):
-    return render(request, "about.html")
-
-
-def user(request, name: str = "Undefined", age: int = 16):
-    data = {"name": name, "age": age}
-    return render(request, "user.html", context=data)
-
-
-def json(request, name: str = "Undefined", age: int = 16):
-    return JsonResponse({"name": name, "age": age})
+def delete(request, id):
+    try:
+        person = Person.objects.get(id=id)
+        person.delete()
+        return HttpResponseRedirect("/")
+    except Person.DoesNotExist:
+        return HttpResponseNotFound("<h2>Person not found</h2>")
