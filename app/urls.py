@@ -1,9 +1,11 @@
 from django.urls import path, re_path
-from . import views
+from .views import about
+from .views import index, create, edit, delete
 
 urlpatterns = [
-    path('create/', views.create),
-    path('edit/<int:id>/', views.edit),
-    path('delete/<int:id>/', views.delete),
-    path('', views.index, name="index"),
+    path('create/', create.create),
+    path('edit/<int:id>/', edit.edit),
+    path('delete/<int:id>/', delete.delete),
+    path('about/', about.about),
+    path('', index.index, name="index"),
 ]
