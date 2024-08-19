@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from ..models.person import Person
+
+from app.models.product import Product
+
 
 def index(request):
-    people = Person.objects.all()
-    return render(request, 'index.html', {'people': people})
+    products = Product.objects.all()
+    return render(request, 'index.html', {'products': products})

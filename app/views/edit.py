@@ -1,17 +1,21 @@
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render
-from ..models.person import Person
+
+from app.models.company import Company
+from app.models.product import Product
 
 
 def edit(request, id):
     try:
-        person = Person.objects.get(id=id)
+        product = Product.objects.get(id=id)
         if request.method == 'POST':
-            person.name = request.POST.get("name")
-            person.age = request.POST.get("age")
-            person.save()
-            return HttpResponseRedirect("/")
+            product.name = request.POST.get('name')
+            product.price = request.POST.get('price')
+            product.company_id = request.POST.get('company')
+            product.save()
+            return HttpResponseRedirect('/')
         else:
-            return render(request, "edit.html", {"person": person})
-    except Person.DoesNotExist:
-        return HttpResponseNotFound("<h2>Person not found</h2>")
+            companies = Company.objects.all()
+            return render(request, 'edit.html', {'product': product, 'companies': companies})
+    except Product.DoesNotExist:
+        return HttpResponseNotFound('<h2>Product not found</h2>')
