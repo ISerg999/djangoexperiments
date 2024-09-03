@@ -1,11 +1,11 @@
-body{
-    font-family: Verdana;
-    background-color: yellow;
+html {
+ font: 14px/1.5 Arial, sans-serif;
+ background: #C0C0C0;
 }
-h1{color:navy;}
-img{width:400px;}
 
-.alert{color:red;}
-.form-group{margin: 10px 0;}
-.form-group input{width:250px;height: 25px;border-radius:3px;}
-.field{font-weight:bold;}
+body {
+ background: #CCCCCC;
+ padding: 0 20px;
+ width: 920px;
+ margin: 0 auto;
+}
