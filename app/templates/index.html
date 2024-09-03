@@ -1,24 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Базы данных 2</title>
-</head>
-<body>
-    <h2>Список товаров</h2>
-    <a href="create/">Добавление товара</a>
-    <table>
-        <thead><th>Название</th><th>Цена</th><th>Компания</th><th></th></thead>
-        {% for product in products %}
-        <tr>
-            <td>{{ product.name }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.company.name }}</td>
-            <td>
-                <a href="edit/{{ product.id }}">Изменить</a> | <a href="delete/{{ product.id }}">Удалить</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Список проделанной работы{% endblock title %}
+{% block header %}Проделанные работы за период времени{% endblock header %}
+
+{% block content %}
+    <p>Выберите период с начальной даты по конечную дату.</p>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="from_date">С какой даты:</label>
+            <input type="datetime-local" id="from_date" name="from_date" value="{{ from_date|date:"Y-m-d H:m" }}" />
+        </div>
+        <div>
+            <label for="to_date">По какую дату:</label>
+            <input type="datetime-local" id="to_date" name="to_date" value="{{ to_date|date:"Y-m-d H:m" }}" />
+        </div>
+        <p><input type="submit" value="Изменить фильтр"></p>
+    </form>
+    {% if tasks %}
+        <table>
+            <thead><th>?</th><th>?</th><th></th></thead>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ 0 }}</td>
+                    <td>{{ 1 }}</td>
+                    <td>
+                        <a href="">Просмотр</a> | <a href="Удаление"></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br />
+        <p><a href="">Экспорт в Excel</a></p>
+    {% else %}
+        {% if is_all_tasks %}
+            <h3>В заданном временном периоде нет ни одной работы!</h3>
+        {% else %}
+            <h3>В базе пока нет ни одной заявки с работой!</h3>
+        {% endif %}
+    {% endif %}
+{% endblock content %}
