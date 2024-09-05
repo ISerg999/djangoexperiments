@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Базы данных 2</title>
-</head>
-<body>
-  <h2>Добавление товара</h2>
+{% extends "base.html" %}
+
+{% block title %}Создание новой заявки{% endblock title %}
+{% block header %}Новая заявка{% endblock header %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    <table>
+      {{ task_form }}
+    </table>
+    <input type="submit" value="Создать" >
+  </form>
+{% endblock content %}
+
   <form method="post">
     {% csrf_token %}
     <p>
@@ -26,5 +33,3 @@
     </p>
     <input type="submit" value="Сохранить" >
   </form>
-</body>
-</html>

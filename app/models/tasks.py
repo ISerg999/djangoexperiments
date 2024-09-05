@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 from django.db import models
 
 from app.models.status_task import StatusTask
@@ -13,7 +15,7 @@ class Tasks(models.Model):
     job_acceptance_date = models.DateTimeField() # Дата принятия задания в работу.
     # Предпологаемая дата выполнения, или Null, если дата выполнения не ограничина.
     approximate_date = models.DateTimeField(null=True)
-    date_task = models.DateTimeField(null=True) # Дата завершения задания.
+    execution_period = models.DurationField(default=timedelta(days=0)) # Период выполнения задания.
     is_periodic = models.BooleanField(default=False) # Определяет, переодически повторяющееся задание, или одноразовое.
 
     @staticmethod
