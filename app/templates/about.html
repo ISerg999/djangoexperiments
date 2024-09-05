@@ -1,12 +1,10 @@
 {% load static %}
-<html>
-<head>
-    <title>Ехперименты</title>
-    <meta charset="utf-8" />
-</head>
-<body>
-    <h2>О себе.</h2>
+{% extends "base.html" %}
+
+{% block title %}О сайте{% endblock title %}
+{% block header %}Информация о сайте{% endblock header %}
+
+{% block content %}
     <p>Проверка изображения</p>
     <img src="{% static "images/001.jpg" %}"></img>
-</body>
-</html>
+{% endblock content %}
