@@ -7,6 +7,6 @@ urlpatterns = [
     # path('edit/<int:id>/', edit.edit),
     # path('delete/<int:id>/', delete.delete),
     # path('create/tasks', create_tasks.create_tasks),
-    path('about/', about.about),
-    path('', index.index, name="index"),
+    path('about/', about.about, name='about'),
+    path('', index.index, name='index'),
 ]
