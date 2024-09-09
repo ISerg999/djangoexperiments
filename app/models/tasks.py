@@ -72,6 +72,13 @@ class Tasks(models.Model):
             return -1
 
     @staticmethod
+    def get_in_job():
+        """
+        Возвращает те задания, которые еще не закрыты.
+        """
+        return Tasks.objects.filter(job_status__lt=1).order_by('-accept_date')
+
+    @staticmethod
     def is_not_empty() -> bool:
         """
         Возвращает True, если в базе есть хоть одно задание, иначе False
