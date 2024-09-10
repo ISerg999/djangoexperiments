@@ -3,13 +3,15 @@ from .views import about
 from .views import index
 from .views import create_task
 from .views import in_job
+from .views import view_task
 
 urlpatterns = [
     # path('create/', create.create),
     # path('edit/<int:id>/', edit.edit),
     # path('delete/<int:id>/', delete.delete),
+    path('view/task/<int:id_task>', view_task.view_task),
     path('create/task', create_task.create_task),
-    path('injob', in_job.in_job, name='injob'),
+    path('injob', in_job.in_job),
     path('about/', about.about, name='about'),
     path('', index.index, name='index'),
 ]

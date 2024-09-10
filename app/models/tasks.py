@@ -3,6 +3,14 @@ from django.db import models
 from datetime import datetime, timedelta
 
 
+JOB_STATUS = (
+    'в работе', 'закрыто', 'принято'
+)
+
+CLOSING_STATUS = (
+    'отменено', 'выполнил', 'не выполнил'
+)
+
 class Tasks(models.Model):
     """
     Модель выполняемых заданий.
@@ -77,6 +85,35 @@ class Tasks(models.Model):
         Возвращает те задания, которые еще не закрыты.
         """
         return Tasks.objects.filter(job_status__lt=1).order_by('-accept_date')
+
+    @staticmethod
+    def get_name_job_status(job_status: int):
+        """
+        По номеру статуса задания возвращает его значение.
+        """
+        return JOB_STATUS[job_status]
+
+    @staticmethod
+    def get_name_closing_status(closing_status: int):
+        """
+        По номеру статуса закрытия возвращает его значение.
+        """
+        return CLOSING_STATUS[closing_status]
+
+    @staticmethod
+    def get_task(id_task: int):
+        """
+        Возвращение информации о задании
+        """
+        try:
+            task = Tasks.objects.get(id=id_task)
+            # TODO: Получить список всех подзадач данного задания.
+            parts_task = []
+            # TODO: Определить, закрыто или нет последнее выполняемая подзадача
+            is_job = False
+            return task, parts_task, is_job
+        except ObjectDoesNotExist:
+            return None, None, False
 
     @staticmethod
     def is_not_empty() -> bool:
