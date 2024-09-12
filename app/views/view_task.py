@@ -5,7 +5,7 @@ from app.models import Tasks
 
 
 def view_task(request: HttpRequest, id_task: int):
-    task, parts_task, is_job = Tasks.get_task(id_task)
+    task, parts_task, is_job = Tasks.get_task_full(id_task)
     if task is None:
         return HttpResponseNotFound()
     return render(request, 'view_task.html', {

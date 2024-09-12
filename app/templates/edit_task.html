@@ -23,12 +23,12 @@
         <div class="form-group row">
             <label for="approximate_date" class="col-sm-2 col-form-label fw-bold">Дата выполнения заявки</label>
             <div class="col-sm-10">
-                <input type="datetime-local" min="" class="form-control {% if approximate_date_err %}is-invalid{% endif %}" id="approximate_date" aria-describedby="approximateFeedback" name="approximate_date" value="{{ approximate_date|date:"Y-m-d H:m" }}" />
+                <input type="datetime-local" class="form-control {% if approximate_date_err %}is-invalid{% endif %}" id="approximate_date" aria-describedby="approximateFeedback" name="approximate_date" value="{{ approximate_date|date:"Y-m-d H:m" }}" />
                 <div id="approximateFeedback" class="invalid-feedback fw-bold">{{ approximate_date_err }}</div>
             </div>
         </div>
         <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Создать</button>
+            <button type="submit" class="btn btn-primary">{% if task.id < 1 %}Создать{% else %}Изменить{% endif %}</button>
         </div>
     </form>
     <br />

@@ -103,7 +103,18 @@ class Tasks(models.Model):
     @staticmethod
     def get_task(id_task: int):
         """
-        Возвращение информации о задании
+        Возвращает только содержимое заявки по ее id
+        """
+        try:
+            task = Tasks.objects.get(id=id_task)
+            return task
+        except ObjectDoesNotExist:
+            return None
+
+    @staticmethod
+    def get_task_full(id_task: int):
+        """
+        Возвращение полну информации о задании
         """
         try:
             task = Tasks.objects.get(id=id_task)
