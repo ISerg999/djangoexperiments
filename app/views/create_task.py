@@ -7,6 +7,9 @@ from app.models import Tasks
 
 
 def create_task(request: HttpRequest):
+    """
+    Создание новой заявки.
+    """
     task_html = {
         'id': 0,
         'code': '',

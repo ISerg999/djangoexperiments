@@ -68,12 +68,12 @@ class Tasks(models.Model):
                 is_error = True
         return is_error, code_err, description_err, approximate_date_err, approximate_date
 
-    # @staticmethod
-    # def get_in_job():
-    #     """
-    #     Возвращает те задания, которые еще не закрыты.
-    #     """
-    #     return Tasks.objects.filter(job_status__lt=1).order_by('-accept_date')
+    @staticmethod
+    def get_in_job():
+        """
+        Возвращает те задания, которые еще не закрыты.
+        """
+        return Tasks.objects.filter(job_status__lt=1).order_by('-accept_date')
 
     # @staticmethod
     # def get_name_job_status(job_status: int):
