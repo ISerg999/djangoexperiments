@@ -1,5 +1,4 @@
-from datetime import datetime
-
+from datetime import datetime, timezone
 from django.http import HttpRequest, HttpResponseRedirect
 from django.shortcuts import render
 
@@ -22,7 +21,7 @@ def create_job(request: HttpRequest, id_task: int):
         part_task_html['description_err'] = description_err
         if not is_error:
             progress = ProgressJob()
-            progress.frame_date = datetime.now()
+            progress.frame_date = datetime.now(timezone.utc)
             progress.description = part_task_html['description']
             progress.task = Tasks.get_task(id_task)
             progress.save()
