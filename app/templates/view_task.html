@@ -54,14 +54,14 @@
 </ul>
 <br />
 <div class="container bg-light">
-  <div class="card-group mx-auto" style="width: 60rem;">
+  <div class="card-group mx-auto" style="width: 100%;">
     <div class="card">
       <a class="btn btn-outline-danger" href="/edit/task/{{ task.id }}">Редактирование задания</a>
     </div>
     {% if task.job_status < 1 %}
     <div class="card">
       {% if is_job %}
-      <a class="btn btn-outline-primary" href="#">
+      <a class="btn btn-outline-primary" href="/pause/job/{{ task.id }}">
         Приостановить выполнение задания
       {% else %}
       <a class="btn btn-outline-primary" href="/create/job/{{ task.id }}">
@@ -77,6 +77,28 @@
 </div>
 <br />
 {% if parts_task %}
-<h3>Вывод списка выполняемых подзаданий</h3>
+<h3>Прогресс выполнения задания</h3>
+<table class="table table-striped">
+  <thead><tr>
+    <th scope="col">Описание выполнения части задания</th>
+    <th scope="col">Начало выполнения части задания</th>
+    <th scope="col">Время выполнения части задания</th>
+    <th scope="col"></th>
+  </tr></thead>
+  {% for part in parts_task %}
+  <tr>
+    <td>{{ part.description }}</td>
+    <td>{{ part.frame_date }}</td>
+    <td>
+      {% if part.frame_time %}
+      {{ part.frame_time }}
+      {% endif %}
+    </td>
+    <td>
+      <a href="#">Редактирование</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
 {% endif %}
 {% endblock content %}

@@ -9,21 +9,21 @@
     <div class="form-group row">
       <label for="description" class="col-sm-2 col-form-label fw-bold">Описание выполняемой работы</label>
       <div class="col-sm-10">
-        <textarea class="form-control {% if description_err %}is-invalid{% endif %}" id="description" name="description" rows="4" aria-describedby="descriptionFeedback">{{ description }}</textarea>
-        <div id="descriptionFeedback" class="invalid-feedback fw-bold">{{ description_err }}</div>
+        <textarea class="form-control {% if part_task_html.description_err %}is-invalid{% endif %}" id="description" name="description" rows="4" aria-describedby="descriptionFeedback">{{ part_task_html.description }}</textarea>
+        <div id="descriptionFeedback" class="invalid-feedback fw-bold">{{ part_task_html.description_err }}</div>
       </div>
     </div>
-    {% if is_duration then %}
+    {% if part_task_html.is_frame_time %}
     <div class="form-group row">
-      <label for="duration" class="col-sm-2 col-form-label fw-bold">Время выполнения работы</label>
+      <label for="frame_tame" class="col-sm-2 col-form-label fw-bold">Время выполнения работы</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control {% if duration_err %}is-invalid{% endif %}" id="duration" aria-describedby="durationFeedback" name="duration" value="{{ duration }}" />
-        <div id="durationFeedback" class="invalid-feedback fw-bold">{{ duration_err }}</div>
+        <input type="text" class="form-control {% if part_task_html.frame_time_err %}is-invalid{% endif %}" id="frame_tame" aria-describedby="frame_tameFeedback" name="frame_tame" value="{{ part_task_html.frame_time }}" />
+        <div id="frame_tameFeedback" class="invalid-feedback fw-bold">{{ part_task_html.frame_time_err }}</div>
       </div>
     </div>
     {% endif %}
     <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary">{% if job_id < 1 %}Создать{% else %}Изменить{% endif %}</button>
+      <button type="submit" class="btn btn-primary">{% if part_task_html.id < 1 %}Создать{% else %}Изменить{% endif %}</button>
     </div>
   </form>
   <br />
@@ -35,10 +35,10 @@
         Описывает выполняемые действия. Не может быть пустым значением.
       </div>
     </li>
-    {% if is_duration then %}
+    {% if part_task_html.is_frame_time %}
     <li class="list-group-item d-flex justify-content-between align-items-start">
       <div class="ms-4 me-auto">
-        <div class="fw-bold">Время выполнения работы</div>
+        <div class="fw-bold">Время выполнения части работы</div>
         Должно быть положительным значением.
       </div>
     </li>

@@ -102,16 +102,16 @@ class Tasks(models.Model):
         """
         return CLOSING_STATUS[closing_status]
 
-    # @staticmethod
-    # def get_task(id_task: int):
-    #     """
-    #     Возвращает только содержимое заявки по ее id
-    #     """
-    #     try:
-    #         task = Tasks.objects.get(id=id_task)
-    #         return task
-    #     except ObjectDoesNotExist:
-    #         return None
+    @staticmethod
+    def get_task(id_task: int):
+        """
+        Возвращает только содержимое заявки по ее id
+        """
+        try:
+            task = Tasks.objects.get(id=id_task)
+            return task
+        except ObjectDoesNotExist:
+            return None
 
     # @staticmethod
     # def is_not_empty() -> bool:
