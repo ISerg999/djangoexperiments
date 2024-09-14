@@ -75,19 +75,32 @@ class Tasks(models.Model):
         """
         return Tasks.objects.filter(job_status__lt=1).order_by('-accept_date')
 
-    # @staticmethod
-    # def get_name_job_status(job_status: int):
-    #     """
-    #     По номеру статуса задания возвращает его значение.
-    #     """
-    #     return JOB_STATUS[job_status]
+    @staticmethod
+    def get_task_full(id_task: int):
+        """
+        Возвращение полную информации о задании
+        """
+        try:
+            task = Tasks.objects.get(id=id_task)
+            parts_task = task.progressjob_set.all().order_by('frame_date')
+            is_job = parts_task.filter(frame_time__exact=None).count() > 0
+            return task, parts_task, is_job
+        except ObjectDoesNotExist:
+            return None, None, False
 
-    # @staticmethod
-    # def get_name_closing_status(closing_status: int):
-    #     """
-    #     По номеру статуса закрытия возвращает его значение.
-    #     """
-    #     return CLOSING_STATUS[closing_status]
+    @staticmethod
+    def get_name_job_status(job_status: int):
+        """
+        По номеру статуса задания возвращает его значение.
+        """
+        return JOB_STATUS[job_status]
+
+    @staticmethod
+    def get_name_closing_status(closing_status: int):
+        """
+        По номеру статуса закрытия возвращает его значение.
+        """
+        return CLOSING_STATUS[closing_status]
 
     # @staticmethod
     # def get_task(id_task: int):
@@ -99,19 +112,6 @@ class Tasks(models.Model):
     #         return task
     #     except ObjectDoesNotExist:
     #         return None
-
-    # @staticmethod
-    # def get_task_full(id_task: int):
-    #     """
-    #     Возвращение полную информации о задании
-    #     """
-    #     try:
-    #         task = Tasks.objects.get(id=id_task)
-    #         parts_task = task.product_set.all().order_by('start_date')
-    #         is_job = parts_task.filter(duration__exact=None).count() > 0
-    #         return task, parts_task, is_job
-    #     except ObjectDoesNotExist:
-    #         return None, None, False
 
     # @staticmethod
     # def is_not_empty() -> bool:
