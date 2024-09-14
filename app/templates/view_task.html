@@ -60,10 +60,11 @@
     </div>
     {% if task.job_status < 1 %}
     <div class="card">
+      {% if is_job %}
       <a class="btn btn-outline-primary" href="#">
-        {% if is_job %}
         Приостановить выполнение задания
-        {% else %}
+      {% else %}
+      <a class="btn btn-outline-primary" href="/create/job/{{ task.id }}">
         Возобнавить выполнение задания
         {% endif %}
       </a>
