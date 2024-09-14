@@ -27,56 +27,46 @@ class Tasks(models.Model):
     # Статус закрытия задания: -1 - не смог выполнить, 0 - отменено, 1 - выполнил
     closing_status = models.SmallIntegerField(default=0)
 
+    @staticmethod
+    def get_id_code(code: str) -> int:
+        """
+        Проверяет существование заявки с заданным кодом. При возвращении -1 указывает, что кода нет.
+        """
+        if (code is not None) and (len(code) > 0):
+            try:
+                task = Tasks.objects.get(code=code)
+                return task.id
+            except ObjectDoesNotExist:
+                return -1
+            except MultipleObjectsReturned:
+                print(f"Ошибка в базе. Количество заданий с кодом = {code} более 1.")
+                return -2
+        else: return -1
 
-    # @staticmethod
-    # def validate_task_for_html(code: str, description: str, approximate_date: str, id_task: int) -> tuple:
-    #     """
-    #     Валидация для создания новой заявки и редактирования заявки.
-    #     code - код заявки
-    #     description - описание заявки
-    #     approximate_date - предпологаемая дата завершения заявки
-    #     id_task - для создания заявки имеет значение 0, для редактирования должно иметь знаяения id заявки
-    #     """
-    #     is_error = False
-    #     get_id = Tasks.get_id_code(code)
-    #     if (get_id > 0) and (get_id != id_task):
-    #         code_err = 'Заявка с таким кодом уже существует!'
-    #         is_error = True
-    #     else:
-    #         code_err = ''
-    #     if (description is not None) and (len(description) > 0):
-    #         description_err = ''
-    #     else:
-    #         description_err = 'Описание задания не должно быть пустым!'
-    #         is_error = True
-    #     if (approximate_date is not None) and (len(approximate_date) > 0):
-    #         approximate_date = datetime.strptime(approximate_date, '%Y-%m-%dT%H:%M')
-    #         if approximate_date > datetime.now() + timedelta(minutes=1):
-    #             approximate_date_err = ''
-    #         else:
-    #             approximate_date_err = 'Дата окончания задания должна быть больше текущей даты!'
-    #             is_error = True
-    #     else:
-    #         approximate_date = None
-    #         approximate_date_err = ''
-    #     return is_error, code_err, description_err, approximate_date_err, approximate_date
-
-    # @staticmethod
-    # def get_id_code(code: str) -> int:
-    #     """
-    #     Проверяет существование заявки с заданным кодом. При возвращении -1 указывает, что кода нет.
-    #     """
-    #     if (code is not None) and (len(code) > 0):
-    #         try:
-    #             task = Tasks.objects.get(code=code)
-    #             return task.id
-    #         except ObjectDoesNotExist:
-    #             return -1
-    #         except MultipleObjectsReturned:
-    #             print(f"Ошибка в базе. Количество заданий с кодом = {code} более 1.")
-    #             return -2
-    #     else:
-    #         return -1
+    @staticmethod
+    def validate_task_for_html(task_html: dict) -> tuple:
+        """
+        Валидация для создания новой заявки и редактирования заявки.
+        task_html - словарь с проверяемыми параметрами
+        """
+        is_error = False
+        code_err = ''
+        description_err = ''
+        approximate_date_err = ''
+        approximate_date = None
+        get_id = Tasks.get_id_code(task_html['code'])
+        if (get_id > 0) and (get_id != task_html['id']):
+            code_err = 'Заявка с таким кодом уже существует!'
+            is_error = True
+        if (task_html['description'] is None) or (len(task_html['description']) == 0):
+            description_err = 'Описание задания не должно быть пустым!'
+            is_error = True
+        if (task_html['approximate_date'] is not None) and (len(task_html['approximate_date']) > 0):
+            approximate_date = datetime.strptime(task_html['approximate_date'], '%Y-%m-%dT%H:%M')
+            if approximate_date < datetime.now() + timedelta(minutes=1):
+                approximate_date_err = 'Дата окончания задания должна быть больше текущей даты!'
+                is_error = True
+        return is_error, code_err, description_err, approximate_date_err, approximate_date
 
     # @staticmethod
     # def get_in_job():

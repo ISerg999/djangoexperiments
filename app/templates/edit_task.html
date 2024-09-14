@@ -9,26 +9,26 @@
         <div class="form-group row">
             <label for="code" class="col-sm-2 col-form-label fw-bold">Код заявки</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control {% if code_err %}is-invalid{% endif %}" id="code" aria-describedby="codeFeedback" name="code" value="{{ code }}" />
-                <div id="codeFeedback" class="invalid-feedback fw-bold">{{ code_err }}</div>
+                <input type="text" class="form-control {% if task_html.code_err %}is-invalid{% endif %}" id="code" aria-describedby="codeFeedback" name="code" value="{{ task_html.code }}" />
+                <div id="codeFeedback" class="invalid-feedback fw-bold">{{ task_html.code_err }}</div>
             </div>
         </div>
         <div class="form-group row">
             <label for="description" class="col-sm-2 col-form-label fw-bold">Описание заявки</label>
             <div class="col-sm-10">
-                <textarea class="form-control {% if description_err %}is-invalid{% endif %}" id="description" name="description" rows="4" aria-describedby="descriptionFeedback">{{ description }}</textarea>
-                <div id="descriptionFeedback" class="invalid-feedback fw-bold">{{ description_err }}</div>
+                <textarea class="form-control {% if task_html.description_err %}is-invalid{% endif %}" id="description" name="description" rows="4" aria-describedby="descriptionFeedback">{{ task_html.description }}</textarea>
+                <div id="descriptionFeedback" class="invalid-feedback fw-bold">{{ task_html.description_err }}</div>
             </div>
         </div>
         <div class="form-group row">
             <label for="approximate_date" class="col-sm-2 col-form-label fw-bold">Дата выполнения заявки</label>
             <div class="col-sm-10">
-                <input type="datetime-local" class="form-control {% if approximate_date_err %}is-invalid{% endif %}" id="approximate_date" aria-describedby="approximateFeedback" name="approximate_date" value="{{ approximate_date|date:"Y-m-d H:m" }}" />
-                <div id="approximateFeedback" class="invalid-feedback fw-bold">{{ approximate_date_err }}</div>
+                <input type="datetime-local" class="form-control {% if task_html.approximate_date_err %}is-invalid{% endif %}" id="approximate_date" aria-describedby="approximateFeedback" name="approximate_date" value="{{ task_html.approximate_date|date:"Y-m-d H:m" }}" />
+                <div id="approximateFeedback" class="invalid-feedback fw-bold">{{ task_html.approximate_date_err }}</div>
             </div>
         </div>
         <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">{% if id_task < 1 %}Создать{% else %}Изменить{% endif %}</button>
+            <button type="submit" class="btn btn-primary">{% if task_html.id < 1 %}Создать{% else %}Изменить{% endif %}</button>
         </div>
     </form>
     <br />
