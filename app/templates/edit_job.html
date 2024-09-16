@@ -17,7 +17,7 @@
     <div class="form-group row">
       <label for="frame_tame" class="col-sm-2 col-form-label fw-bold">Время выполнения работы</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control {% if part_task_html.frame_time_err %}is-invalid{% endif %}" id="frame_tame" aria-describedby="frame_tameFeedback" name="frame_tame" value="{{ part_task_html.frame_time }}" />
+        <input type="text" class="form-control {% if part_task_html.frame_time_err %}is-invalid{% endif %}" id="frame_tame" aria-describedby="frame_tameFeedback" name="frame_time" value="{{ part_task_html.frame_time }}" />
         <div id="frame_tameFeedback" class="invalid-feedback fw-bold">{{ part_task_html.frame_time_err }}</div>
       </div>
     </div>

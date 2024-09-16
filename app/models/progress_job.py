@@ -1,4 +1,6 @@
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
+
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 
 from app.models.tasks import Tasks
@@ -25,15 +27,18 @@ class ProgressJob(models.Model):
         is_error = False
         description_err = ''
         frame_time_err = ''
+        frame_time = timedelta(0)
 
         if (part_task_html['description'] is None) or (len(part_task_html['description']) == 0):
             description_err = 'Описание задания не должно быть пустым!'
             is_error = True
-        if part_task_html['frame_time'] is not None:
-            if part_task_html['frame_time'] <= 0:
+        if part_task_html['is_frame_time']:
+            hours,minutes,seconds = map(float, part_task_html['frame_time'].split(':'))
+            frame_time = timedelta(hours=hours, minutes=minutes, seconds=seconds)
+            if frame_time.total_seconds() <= 0:
                 frame_time_err = 'Продолжительность выполнения части задания должно быть положительным значением!'
                 is_error = True
-        return is_error, description_err, frame_time_err
+        return is_error, description_err, frame_time_err, frame_time
 
     @staticmethod
     def get_in_job(id_task: int):
@@ -49,3 +54,14 @@ class ProgressJob(models.Model):
         if job is not None:
             job.frame_time = datetime.now(timezone.utc) - job.frame_date
             job.save()
+
+    @staticmethod
+    def get_job(id_job: int):
+        """
+        Возвращает содержимое части выполняемой работы.
+        """
+        try:
+            job = ProgressJob.objects.get(id=id_job)
+            return job
+        except ObjectDoesNotExist:
+            return None

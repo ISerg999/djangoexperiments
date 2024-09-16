@@ -17,7 +17,7 @@ def create_job(request: HttpRequest, id_task: int):
 
     if request.method == 'POST':
         part_task_html['description'] = request.POST.get('description', '')
-        is_error, description_err, _ = ProgressJob.validate_job_for_html(part_task_html)
+        is_error, description_err, _, _ = ProgressJob.validate_job_for_html(part_task_html)
         part_task_html['description_err'] = description_err
         if not is_error:
             progress = ProgressJob()
