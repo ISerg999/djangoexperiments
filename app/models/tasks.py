@@ -105,13 +105,34 @@ class Tasks(models.Model):
     @staticmethod
     def get_task(id_task: int):
         """
-        Возвращает только содержимое заявки по ее id
+        Возвращает только содержимое заявки по ее id.
         """
         try:
             task = Tasks.objects.get(id=id_task)
             return task
         except ObjectDoesNotExist:
             return None
+
+    @staticmethod
+    def get_count_part(id_task: int) -> int:
+        """
+        Возвращает количество подзадач в задаче.
+        """
+        task_obj = Tasks.get_task(id_task)
+        if task_obj is None:
+            return -1
+        return task_obj.progressjob_set.count()
+
+    @staticmethod
+    def close_task(id_task: int, status_closing: int):
+        """
+        Закрытие задания.
+        """
+        task_obj = Tasks.get_task(id_task)
+        if task_obj is not None:
+            task_obj.job_status = 1
+            task_obj.closing_status = status_closing
+            task_obj.save()
 
     # @staticmethod
     # def is_not_empty() -> bool:

@@ -51,6 +51,9 @@ class ProgressJob(models.Model):
 
     @staticmethod
     def set_frame_time(job):
+        """
+        Приостанавливает текущее выполнение задания.
+        """
         if job is not None:
             job.frame_time = datetime.now(timezone.utc) - job.frame_date
             job.save()
@@ -65,3 +68,16 @@ class ProgressJob(models.Model):
             return job
         except ObjectDoesNotExist:
             return None
+
+    @staticmethod
+    def test_and_continue(id_task: int, is_continue: bool) -> bool:
+        """
+        Проверяет есть ли не остановленная подзадача. Результат возвращает.
+        Если is_continue == True, то закрывает не остановленную подзадачу.
+        """
+        job_obj = ProgressJob.get_in_job(id_task)
+        if job_obj is None:
+            return False
+        if is_continue:
+            ProgressJob.set_frame_time(job_obj)
+        return True

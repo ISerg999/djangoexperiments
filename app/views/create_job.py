@@ -20,10 +20,14 @@ def create_job(request: HttpRequest, id_task: int):
         is_error, description_err, _, _ = ProgressJob.validate_job_for_html(part_task_html)
         part_task_html['description_err'] = description_err
         if not is_error:
+            ProgressJob.test_and_continue(id_task, True)
             progress = ProgressJob()
             progress.frame_date = datetime.now(timezone.utc)
             progress.description = part_task_html['description']
             progress.task = Tasks.get_task(id_task)
+            if progress.task.job_status < 0:
+                progress.task.job_status = 0
+                progress.task.save()
             progress.save()
             return HttpResponseRedirect(f'/view/task/{id_task}')
 
